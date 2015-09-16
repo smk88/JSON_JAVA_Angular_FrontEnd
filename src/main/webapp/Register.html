@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html >
+    <head>
+        <script>
+                    function getURLParameter(name) {
+                        alert("Hello");
+                        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+
+                    }
+                    
+        </script>
+        <title>Registration Page</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <noscript>
+        <link rel="stylesheet" href="css/skel.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style-xlarge.css" />
+        </noscript>
+    </head>
+    <body background="images/pic.jpg" ng-app="myApp" ng-controller="customersCtrl">
+        <div style="background-image:url('images/pic.jpg');background-repeat:no-repeat;">
+        </div>
+
+        <h1><font color="white">Registration Page</font></h1>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <ul class="actions alt">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><input style="background-image:url('images/pic.jpg');color: white;font-size: 30px;text-align: center;" type="label" name="yr" value="Year" disabled></li>
+            <li><input ng-model="year" style="color:white;" type="text" name="lname" id="year" value=""  disabled ></li>
+            <li><input style="background-image:url('images/pic.jpg');color: white;font-size: 30px;text-align: center;" type="label" name="div" value="Division" disabled></li>
+            <li><input ng-model="divison" style="color:white;" type="text" name="lname" id="div"  value="" disabled></li>
+        </ul>
+        <div >
+            <table class="alt" border=5px >
+                <thead>
+                    <tr text-align:center>
+                        <th>G.R. No.</th>
+                        <th>Roll No.</th>
+                        <th>Members</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody >
+
+                    <tr>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td >
+                            <span  class="nullable">
+                                <select style="background-color: #228B22;" ng-model="selectstudent0" ng-options="student.Name for student in students">
+                                    <option value="">-- choose member--</option>
+                                </select>
+                            </span>
+
+                        </td>
+                        <td><a type="reset" 
+                               ng-click="reset()" class="button">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td> <span  class="nullable">
+                                <select style="background-color: #228B22;" ng-model="selectstudent1" ng-options="student.Name for student in students">
+                                    <option value="">-- choose member--</option>
+                                </select>
+                            </span></td>
+                        <td><a class="button" type="reset" 
+                               ng-click="reset()">Remove</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td> <span  class="nullable">
+                                <select style="background-color: #228B22;" ng-model="selectstudent2" ng-options="student.Name for student in students">
+                                    <option value="">-- choose member--</option>
+                                </select>
+                            </span></td>
+                        <td><a type="reset" 
+                               ng-click="reset()" class="button">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td> <span  class="nullable">
+                                <select style="background-color: #228B22;" ng-model="selectstudent3" ng-options="student.Name for student in students">
+                                    <option value="">-- choose member--</option>
+                                </select>
+                            </span></td>
+                        <td><a type="reset" 
+                               ng-click="reset()" class="button">Remove</a></td>
+                    </tr>
+                    <tr>
+
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td><input type="text" name="lname" value="" disabled></td>
+                        <td> <span  class="nullable">
+                                <select style="background-color: #228B22;" ng-model="selectstudent4" ng-options="student.Name for student in students">
+                                    <option value="">-- choose member--</option>
+                                </select>
+                            </span></td>
+                        <td><a type="reset" 
+                               ng-click="reset()" class="button">Remove</a></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('customersCtrl', function ($scope, $http) {
+                        $http.get("http://www.w3schools.com/angular/customers_mysql.php")
+                                .success(function (response) {
+                                    $scope.students = response.records;
+                                });
+                                
+                    alert("hello");
+                    var var1 = getURLParameter('reg');
+                    alert(var1);
+                    });
+        </script>
+
+    </body>
+</html>    

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mini Project Login</title>
+
+
+<script src="js/prefixfree.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+</head>
+
+<body>
+
+	<div>
+		Mini<span>Project</span>
+	</div>
+	</div>
+	<br>
+	<div class="login" ng-app="myapp" ng-controller="mycontroller">
+		<input type="text" placeholder="Username" ng-model="user"><br>
+		<input type="password" placeholder="Password" ng-model="pass"><br>
+		<input type="button" value="Login" ng-click="login()">
+
+	
+			<ul ng-repeat="data1 in dataArray">
+				<li>{{data1.name}}</li>
+			</ul>
+		
+	</div>
+
+	<script>
+        var app = angular.module("myapp", []);
+
+        app.controller("mycontroller", function($scope, $http) {
+        	
+        	$scope.login = function(){
+          $http.get('webapi/mydata').
+            success(function(data, status, headers, config) {
+            	alert(data);
+            	console.log(JSON.stringify(data));
+              $scope.dataArray = data;
+            }).
+            error(function(data, status, headers, config) {
+              alert("resource not found"); 
+            });
+        }
+      });
+
+
+        </script>
+</body>
+</html>
+
+<!-- 
+/* {
+                    //var url = 'webresources/myresource/' + $scope.user + '/' + $scope.pass;
+                      var url='webapi/mydata';
+                      alert(url);
+                    $http.get(url).success(function (data){
+                    		alert('BACK to JS');
+                    	 var mySets = [];
+                    	 mySets.length = 0; // Clear initial array
+                    	 mySets.push.apply(mySets, data); // Push data to initial array
+                      
+                    	 alert(mySets[0]);
+                         if  (response == "false")
+                        {
+                             alert("Wrong Credentials"); 
+                        }
+                        else 
+                        {
+                            alert("Success");
+                            window.location='/MiniProjectReg/firstpage.html?record='+response;
+                        } 
+                    }).error(function (response) {
+                        alert("Resourse not found");
+                    }); */
+                     -->
+
